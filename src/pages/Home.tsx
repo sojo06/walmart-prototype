@@ -10,52 +10,44 @@ const Home = () => {
       title: 'AI Customer Service',
       description: 'Chat or call our intelligent AI bot for instant support and step-by-step guidance',
       link: '/customer-service',
-      gradient: 'from-blue-500 to-blue-600'
+      color: 'blue'
     },
     {
       icon: Users,
       title: 'Group Shopping',
       description: 'Create shared carts with friends and family for collaborative shopping experiences',
       link: '/group-shopping',
-      gradient: 'from-yellow-500 to-yellow-600'
+      color: 'indigo'
     },
     {
       icon: Mic,
       title: 'Voice Assistant',
       description: 'Use voice commands for smart checkout and hands-free shopping navigation',
       link: '/voice-assistant',
-      gradient: 'from-purple-500 to-purple-600'
+      color: 'violet'
     },
     {
       icon: Package,
       title: 'Smart Tracking',
       description: 'Track your deliveries in real-time with voice-activated status updates',
       link: '/delivery-tracking',
-      gradient: 'from-green-500 to-green-600'
+      color: 'emerald'
     }
   ];
 
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 px-4">
+      <section className="relative overflow-hidden py-24 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
             <motion.h1 
-              className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-yellow-500 bg-clip-text text-transparent"
-              animate={{ 
-                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-              }}
-              transition={{ 
-                duration: 3, 
-                repeat: Infinity, 
-                ease: 'linear' 
-              }}
+              className="text-5xl md:text-7xl font-bold mb-6 text-gray-900"
             >
               SmartCart
             </motion.h1>
@@ -63,7 +55,7 @@ const Home = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto"
+              className="text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
             >
               Experience the future of shopping with AI-powered assistance, group collaboration, and voice-controlled features
             </motion.p>
@@ -71,13 +63,13 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
               <Link to="/products">
                 <motion.button 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-gradient-to-r from-blue-500 to-yellow-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all"
+                  className="px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-all shadow-sm hover:shadow-md"
                 >
                   Start Shopping
                 </motion.button>
@@ -86,105 +78,69 @@ const Home = () => {
                 <motion.button 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-full shadow-lg hover:shadow-xl border-2 border-blue-200 transition-all"
+                  className="px-8 py-3 bg-white text-blue-600 font-medium rounded-lg border border-blue-200 hover:bg-blue-50 transition-all"
                 >
                   Try AI Assistant
                 </motion.button>
               </Link>
             </motion.div>
           </motion.div>
-
-          {/* Floating Elements */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <motion.div 
-              animate={{ 
-                y: [0, -20, 0],
-                rotate: [0, 10, 0]
-              }}
-              transition={{ 
-                duration: 4, 
-                repeat: Infinity, 
-                ease: 'easeInOut' 
-              }}
-              className="absolute top-20 left-10 w-20 h-20 bg-yellow-400 rounded-full opacity-20"
-            />
-            <motion.div 
-              animate={{ 
-                y: [0, 30, 0],
-                rotate: [0, -15, 0]
-              }}
-              transition={{ 
-                duration: 5, 
-                repeat: Infinity, 
-                ease: 'easeInOut',
-                delay: 1
-              }}
-              className="absolute top-40 right-20 w-16 h-16 bg-blue-500 rounded-full opacity-20"
-            />
-            <motion.div 
-              animate={{ 
-                y: [0, -25, 0],
-                x: [0, 10, 0]
-              }}
-              transition={{ 
-                duration: 6, 
-                repeat: Infinity, 
-                ease: 'easeInOut',
-                delay: 2
-              }}
-              className="absolute bottom-20 left-1/4 w-24 h-24 bg-purple-400 rounded-full opacity-20"
-            />
-          </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
               Powerful Features
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Discover how SmartCart revolutionizes your shopping experience with cutting-edge technology
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => {
               const Icon = feature.icon;
+              const colorClasses = {
+                blue: 'bg-blue-600 hover:bg-blue-700',
+                indigo: 'bg-indigo-600 hover:bg-indigo-700',
+                violet: 'bg-violet-600 hover:bg-violet-700',
+                emerald: 'bg-emerald-600 hover:bg-emerald-700'
+              };
+              
               return (
                 <motion.div
                   key={feature.title}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ y: -10 }}
+                  whileHover={{ y: -5 }}
                   className="group"
                 >
                   <Link to={feature.link}>
-                    <div className="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 relative overflow-hidden">
-                      <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
+                    <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 h-full">
                       
-                      <div className={`w-16 h-16 bg-gradient-to-r ${feature.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                        <Icon className="text-white w-8 h-8" />
+                      <div className={`w-12 h-12 ${colorClasses[feature.color]} rounded-xl flex items-center justify-center mb-6 transition-colors duration-300`}>
+                        <Icon className="text-white w-6 h-6" />
                       </div>
                       
-                      <h3 className="text-xl font-bold text-gray-800 mb-4 group-hover:text-blue-600 transition-colors">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-3">
                         {feature.title}
                       </h3>
                       
-                      <p className="text-gray-600 leading-relaxed">
+                      <p className="text-gray-600 text-sm leading-relaxed mb-4">
                         {feature.description}
                       </p>
                       
                       <motion.div 
-                        className="mt-6 flex items-center text-blue-500 font-medium group-hover:text-blue-600"
+                        className="flex items-center text-blue-600 text-sm font-medium group-hover:text-blue-700"
                         whileHover={{ x: 5 }}
                       >
                         Learn More →
@@ -199,47 +155,30 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="bg-gradient-to-r from-blue-600 to-yellow-500 rounded-3xl p-12 text-center text-white relative overflow-hidden"
+            className="bg-blue-600 rounded-2xl p-12 text-center text-white"
           >
-            <div className="absolute inset-0">
-              <motion.div 
-                animate={{ 
-                  scale: [1, 1.2, 1],
-                  opacity: [0.1, 0.3, 0.1]
-                }}
-                transition={{ 
-                  duration: 4, 
-                  repeat: Infinity, 
-                  ease: 'easeInOut' 
-                }}
-                className="absolute top-0 left-0 w-full h-full bg-white rounded-full"
-              />
-            </div>
-            
-            <div className="relative z-10">
-              <Sparkles className="w-16 h-16 mx-auto mb-6 text-yellow-200" />
-              <h3 className="text-3xl md:text-4xl font-bold mb-6">
+              <Sparkles className="w-12 h-12 mx-auto mb-6 text-blue-200" />
+              <h3 className="text-2xl md:text-3xl font-bold mb-6">
                 Ready to Transform Your Shopping?
               </h3>
-              <p className="text-xl mb-8 opacity-90">
+              <p className="text-lg mb-8 text-blue-100">
                 Join thousands of users who've already discovered the future of smart shopping
               </p>
               <Link to="/products">
                 <motion.button 
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-10 py-4 bg-white text-blue-600 font-bold rounded-full shadow-lg hover:shadow-xl transition-all"
+                  className="px-8 py-3 bg-white text-blue-600 font-medium rounded-lg hover:bg-gray-50 transition-all"
                 >
                   Get Started Today
                 </motion.button>
               </Link>
-            </div>
           </motion.div>
         </div>
       </section>

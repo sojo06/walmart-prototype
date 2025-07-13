@@ -154,26 +154,26 @@ const CustomerService = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-yellow-50 to-blue-100 p-4">
+    <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-6xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-3xl shadow-2xl overflow-hidden"
+          className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
         >
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-600 to-yellow-500 p-6">
+          <div className="bg-blue-600 p-6 border-b border-gray-100">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <motion.div 
                   animate={{ rotate: callMode ? 360 : 0 }}
-                  className="w-12 h-12 bg-white rounded-full flex items-center justify-center"
+                  className="w-10 h-10 bg-white rounded-lg flex items-center justify-center"
                 >
-                  <Bot className="text-blue-600 w-6 h-6" />
+                  <Bot className="text-blue-600 w-5 h-5" />
                 </motion.div>
                 <div>
-                  <h1 className="text-2xl font-bold text-white">AI Customer Service</h1>
-                  <p className="text-blue-100">
+                  <h1 className="text-xl font-semibold text-white">AI Customer Service</h1>
+                  <p className="text-blue-200 text-sm">
                     {callMode ? 'Voice Call Active' : 'Chat Mode Active'} • Always available
                   </p>
                 </div>
@@ -184,33 +184,33 @@ const CustomerService = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={toggleCallMode}
-                  className={`p-3 rounded-full transition-all ${
+                  className={`p-2 rounded-lg transition-all ${
                     callMode ? 'bg-red-500 text-white' : 'bg-white text-blue-600'
                   }`}
                 >
-                  <Phone className="w-5 h-5" />
+                  <Phone className="w-4 h-4" />
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setCallMode(false)}
-                  className={`p-3 rounded-full transition-all ${
+                  className={`p-2 rounded-lg transition-all ${
                     !callMode ? 'bg-white text-blue-600' : 'bg-blue-700 text-white'
                   }`}
                 >
-                  <MessageCircle className="w-5 h-5" />
+                  <MessageCircle className="w-4 h-4" />
                 </motion.button>
               </div>
             </div>
           </div>
 
           {/* Chat Interface */}
-          <div className="flex h-96">
+          <div className="flex h-[500px]">
             {/* Messages Area */}
             <div className="flex-1 flex flex-col">
               <div 
                 ref={chatContainerRef}
-                className="flex-1 overflow-y-auto p-6 space-y-4 bg-gray-50"
+                className="flex-1 overflow-y-auto p-6 space-y-4"
               >
                 <AnimatePresence>
                   {messages.map((message) => (
@@ -221,21 +221,21 @@ const CustomerService = () => {
                       exit={{ opacity: 0, y: -20 }}
                       className={`flex ${message.isBot ? 'justify-start' : 'justify-end'}`}
                     >
-                      <div className={`max-w-xs lg:max-w-md ${message.isBot ? 'order-1' : 'order-2'}`}>
+                      <div className={`max-w-sm lg:max-w-lg ${message.isBot ? 'order-1' : 'order-2'}`}>
                         <div className={`flex items-end space-x-2 ${message.isBot ? 'flex-row' : 'flex-row-reverse space-x-reverse'}`}>
-                          <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                          <div className={`w-7 h-7 rounded-lg flex items-center justify-center ${
                             message.isBot ? 'bg-blue-500' : 'bg-yellow-500'
                           }`}>
                             {message.isBot ? (
-                              <Bot className="text-white w-4 h-4" />
+                              <Bot className="text-white w-3 h-3" />
                             ) : (
-                              <User className="text-white w-4 h-4" />
+                              <User className="text-white w-3 h-3" />
                             )}
                           </div>
-                          <div className={`px-4 py-3 rounded-2xl ${
+                          <div className={`px-4 py-3 rounded-xl ${
                             message.isBot 
-                              ? 'bg-white border border-gray-200' 
-                              : 'bg-gradient-to-r from-blue-500 to-yellow-500 text-white'
+                              ? 'bg-gray-100 text-gray-900' 
+                              : 'bg-blue-600 text-white'
                           }`}>
                             <p className="text-sm">{message.text}</p>
                             {message.hasSteps && message.steps && (
@@ -246,9 +246,9 @@ const CustomerService = () => {
                                     initial={{ opacity: 0, x: -10 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: index * 0.1 }}
-                                    className="flex items-center space-x-2 text-sm bg-blue-50 p-2 rounded-lg"
+                                    className="flex items-center space-x-2 text-sm bg-white p-3 rounded-lg border border-gray-200"
                                   >
-                                    <span className="w-5 h-5 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs font-bold">
+                                    <span className="w-5 h-5 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-medium">
                                       {index + 1}
                                     </span>
                                     <span className="text-gray-700">{step}</span>
@@ -256,7 +256,7 @@ const CustomerService = () => {
                                 ))}
                               </div>
                             )}
-                            <p className="text-xs text-gray-500 mt-2">
+                            <p className={`text-xs mt-2 ${message.isBot ? 'text-gray-500' : 'text-blue-200'}`}>
                               {message.timestamp.toLocaleTimeString()}
                             </p>
                           </div>
@@ -273,10 +273,10 @@ const CustomerService = () => {
                     className="flex justify-start"
                   >
                     <div className="flex items-center space-x-2">
-                      <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                        <Bot className="text-white w-4 h-4" />
+                      <div className="w-7 h-7 bg-blue-500 rounded-lg flex items-center justify-center">
+                        <Bot className="text-white w-3 h-3" />
                       </div>
-                      <div className="bg-white border border-gray-200 px-4 py-3 rounded-2xl">
+                      <div className="bg-gray-100 px-4 py-3 rounded-xl">
                         <div className="flex space-x-1">
                           {[0, 1, 2].map((i) => (
                             <motion.div
@@ -287,7 +287,7 @@ const CustomerService = () => {
                                 repeat: Infinity, 
                                 delay: i * 0.1 
                               }}
-                              className="w-2 h-2 bg-gray-400 rounded-full"
+                              className="w-1.5 h-1.5 bg-gray-400 rounded-full"
                             />
                           ))}
                         </div>
@@ -299,19 +299,19 @@ const CustomerService = () => {
               </div>
 
               {/* Input Area */}
-              <div className="p-6 bg-white border-t border-gray-200">
+              <div className="p-4 bg-white border-t border-gray-100">
                 <div className="flex items-center space-x-3">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={handleVoiceInput}
-                    className={`p-3 rounded-full transition-all ${
+                    className={`p-2 rounded-lg transition-all ${
                       isListening 
                         ? 'bg-red-500 text-white' 
-                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                        : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
                     }`}
                   >
-                    <Mic className="w-5 h-5" />
+                    <Mic className="w-4 h-4" />
                   </motion.button>
                   
                   <div className="flex-1 relative">
@@ -321,7 +321,7 @@ const CustomerService = () => {
                       onChange={(e) => setNewMessage(e.target.value)}
                       onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                       placeholder={isListening ? "Listening..." : "Type your message..."}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       disabled={isListening}
                     />
                   </div>
@@ -331,9 +331,9 @@ const CustomerService = () => {
                     whileTap={{ scale: 0.95 }}
                     onClick={handleSendMessage}
                     disabled={!newMessage.trim()}
-                    className="p-3 bg-gradient-to-r from-blue-500 to-yellow-500 text-white rounded-full hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <Send className="w-5 h-5" />
+                    <Send className="w-4 h-4" />
                   </motion.button>
                 </div>
               </div>
@@ -346,7 +346,7 @@ const CustomerService = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="mt-8 grid md:grid-cols-3 gap-4"
+          className="mt-6 grid md:grid-cols-3 gap-4"
         >
           {[
             { icon: Package, title: "Track Order", action: "How do I track my order?" },
@@ -358,10 +358,10 @@ const CustomerService = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setNewMessage(action.action)}
-              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all border border-gray-100"
+              className="bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-all border border-gray-100"
             >
-              <action.icon className="w-8 h-8 text-blue-500 mx-auto mb-3" />
-              <h3 className="font-semibold text-gray-800">{action.title}</h3>
+              <action.icon className="w-6 h-6 text-blue-600 mx-auto mb-2" />
+              <h3 className="text-sm font-medium text-gray-900">{action.title}</h3>
             </motion.button>
           ))}
         </motion.div>

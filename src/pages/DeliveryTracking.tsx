@@ -147,17 +147,17 @@ const DeliveryTracking = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-yellow-50 to-blue-100 p-4">
+    <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-6xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Delivery Tracking
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-lg text-gray-600">
             Track your orders in real-time with voice assistance
           </p>
         </motion.div>
@@ -169,9 +169,9 @@ const DeliveryTracking = () => {
             animate={{ opacity: 1, x: 0 }}
             className="lg:col-span-1"
           >
-            <div className="bg-white rounded-2xl shadow-xl p-6">
-              <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                <Package className="w-5 h-5 mr-2 text-blue-500" />
+            <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+              <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                <Package className="w-4 h-4 mr-2 text-blue-600" />
                 Your Orders
               </h2>
               
@@ -182,26 +182,26 @@ const DeliveryTracking = () => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => setSelectedOrder(order.id)}
-                    className={`w-full p-4 rounded-xl text-left transition-all ${
+                    className={`w-full p-3 rounded-lg text-left transition-all ${
                       selectedOrder === order.id
-                        ? 'bg-gradient-to-r from-blue-500 to-yellow-500 text-white'
-                        : 'bg-gray-50 hover:bg-gray-100 text-gray-800'
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-gray-50 hover:bg-gray-100 text-gray-900'
                     }`}
                   >
                     <div className="flex justify-between items-start mb-2">
-                      <span className="font-bold">Order #{order.id}</span>
+                      <span className="text-sm font-semibold">Order #{order.id}</span>
                       <span className="text-sm opacity-90">${order.total}</span>
                     </div>
-                    <p className="text-sm opacity-80 mb-2">
+                    <p className="text-xs opacity-80 mb-2">
                       {order.items.join(', ')}
                     </p>
                     <div className="flex items-center space-x-2">
-                      <div className={`w-2 h-2 rounded-full ${
+                      <div className={`w-1.5 h-1.5 rounded-full ${
                         order.currentStatus.status === 'delivered' ? 'bg-green-400' :
                         order.currentStatus.status === 'out_for_delivery' ? 'bg-orange-400' :
                         'bg-yellow-400'
                       }`} />
-                      <span className="text-sm capitalize">
+                      <span className="text-xs capitalize">
                         {order.currentStatus.status.replace('_', ' ')}
                       </span>
                     </div>
@@ -211,8 +211,8 @@ const DeliveryTracking = () => {
 
               {/* Voice Assistant */}
               <div className="mt-6 pt-6 border-t border-gray-200">
-                <h3 className="font-semibold text-gray-800 mb-3 flex items-center">
-                  <Mic className="w-4 h-4 mr-2 text-blue-500" />
+                <h3 className="text-sm font-semibold text-gray-900 mb-3 flex items-center">
+                  <Mic className="w-4 h-4 mr-2 text-blue-600" />
                   Voice Tracking
                 </h3>
                 
@@ -220,10 +220,10 @@ const DeliveryTracking = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={handleVoiceQuery}
-                  className={`w-full p-3 rounded-xl flex items-center justify-center space-x-2 transition-all ${
+                  className={`w-full p-2 rounded-lg flex items-center justify-center space-x-2 transition-all text-sm ${
                     isVoiceActive
                       ? 'bg-red-500 text-white'
-                      : 'bg-blue-100 text-blue-600 hover:bg-blue-200'
+                      : 'bg-blue-50 text-blue-600 hover:bg-blue-100'
                   }`}
                 >
                   <Mic className="w-4 h-4" />
@@ -234,9 +234,9 @@ const DeliveryTracking = () => {
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="mt-3 p-3 bg-blue-50 rounded-lg"
+                    className="mt-3 p-2 bg-blue-50 rounded-lg"
                   >
-                    <p className="text-sm text-blue-800">{voiceQuery}</p>
+                    <p className="text-xs text-blue-800">{voiceQuery}</p>
                   </motion.div>
                 )}
               </div>
@@ -250,11 +250,11 @@ const DeliveryTracking = () => {
             transition={{ delay: 0.2 }}
             className="lg:col-span-2"
           >
-            <div className="bg-white rounded-2xl shadow-xl p-6">
+            <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
               {/* Order Header */}
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-800">
+                  <h2 className="text-xl font-semibold text-gray-900">
                     Order #{currentOrder.id}
                   </h2>
                   <p className="text-gray-600">
@@ -267,17 +267,17 @@ const DeliveryTracking = () => {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="p-3 bg-green-100 text-green-600 rounded-xl hover:bg-green-200 transition-colors"
+                      className="p-2 bg-green-50 text-green-600 rounded-lg hover:bg-green-100 transition-colors"
                     >
-                      <Phone className="w-5 h-5" />
+                      <Phone className="w-4 h-4" />
                     </motion.button>
                   )}
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="p-3 bg-blue-100 text-blue-600 rounded-xl hover:bg-blue-200 transition-colors"
+                    className="p-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors"
                   >
-                    <MessageCircle className="w-5 h-5" />
+                    <MessageCircle className="w-4 h-4" />
                   </motion.button>
                 </div>
               </div>
@@ -285,17 +285,17 @@ const DeliveryTracking = () => {
               {/* Progress Bar */}
               <div className="mb-8">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium text-gray-600">Delivery Progress</span>
+                  <span className="text-sm font-medium text-gray-700">Delivery Progress</span>
                   <span className="text-sm text-blue-600">
                     {Math.round(getProgressPercentage(currentOrder.currentStatus.status))}%
                   </span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-3">
+                <div className="w-full bg-gray-200 rounded-full h-2">
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${getProgressPercentage(currentOrder.currentStatus.status)}%` }}
                     transition={{ duration: 1, delay: 0.5 }}
-                    className="bg-gradient-to-r from-blue-500 to-yellow-500 h-3 rounded-full"
+                    className="bg-blue-600 h-2 rounded-full"
                   />
                 </div>
               </div>
@@ -305,29 +305,29 @@ const DeliveryTracking = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.3 }}
-                className="bg-gradient-to-r from-blue-50 to-yellow-50 rounded-2xl p-6 mb-6 border border-blue-200"
+                className="bg-blue-50 rounded-xl p-4 mb-6 border border-blue-200"
               >
                 <div className="flex items-start space-x-4">
-                  <div className={`p-3 bg-white rounded-xl ${statusColors[currentOrder.currentStatus.status]}`}>
+                  <div className={`p-2 bg-white rounded-lg ${statusColors[currentOrder.currentStatus.status]}`}>
                     {React.createElement(statusIcons[currentOrder.currentStatus.status], { 
-                      className: "w-6 h-6" 
+                      className: "w-5 h-5" 
                     })}
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-bold text-gray-800 mb-1 capitalize">
+                    <h3 className="text-sm font-semibold text-gray-900 mb-1 capitalize">
                       {currentOrder.currentStatus.status.replace('_', ' ')}
                     </h3>
-                    <p className="text-gray-700 mb-2">
+                    <p className="text-sm text-gray-700 mb-2">
                       {currentOrder.currentStatus.description}
                     </p>
-                    <div className="flex items-center space-x-4 text-sm text-gray-500">
+                    <div className="flex items-center space-x-4 text-xs text-gray-500">
                       <div className="flex items-center space-x-1">
-                        <Clock className="w-4 h-4" />
+                        <Clock className="w-3 h-3" />
                         <span>{currentOrder.currentStatus.timestamp}</span>
                       </div>
                       {currentOrder.currentStatus.location && (
                         <div className="flex items-center space-x-1">
-                          <MapPin className="w-4 h-4" />
+                          <MapPin className="w-3 h-3" />
                           <span>{currentOrder.currentStatus.location}</span>
                         </div>
                       )}
@@ -342,15 +342,15 @@ const DeliveryTracking = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
-                  className="bg-gray-50 rounded-xl p-4 mb-6"
+                  className="bg-gray-50 rounded-lg p-4 mb-6"
                 >
-                  <h3 className="font-semibold text-gray-800 mb-2">Your Driver</h3>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-2">Your Driver</h3>
                   <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-yellow-500 rounded-full flex items-center justify-center text-white font-bold">
+                    <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white text-sm font-medium">
                       {currentOrder.driverName.split(' ').map(n => n[0]).join('')}
                     </div>
                     <div>
-                      <p className="font-medium text-gray-800">{currentOrder.driverName}</p>
+                      <p className="text-sm font-medium text-gray-900">{currentOrder.driverName}</p>
                       <p className="text-sm text-gray-600">{currentOrder.driverPhone}</p>
                     </div>
                   </div>
@@ -359,7 +359,7 @@ const DeliveryTracking = () => {
 
               {/* Tracking History */}
               <div>
-                <h3 className="font-bold text-gray-800 mb-4">Tracking History</h3>
+                <h3 className="text-sm font-semibold text-gray-900 mb-4">Tracking History</h3>
                 <div className="space-y-4">
                   {currentOrder.trackingHistory.map((status, index) => {
                     const StatusIcon = statusIcons[status.status];
@@ -375,20 +375,20 @@ const DeliveryTracking = () => {
                           isActive ? 'opacity-100' : 'opacity-60'
                         }`}
                       >
-                        <div className={`p-2 rounded-lg ${
+                        <div className={`p-1.5 rounded-lg ${
                           isActive 
-                            ? 'bg-gradient-to-r from-blue-500 to-yellow-500 text-white' 
+                            ? 'bg-blue-600 text-white' 
                             : 'bg-gray-200 text-gray-600'
                         }`}>
-                          <StatusIcon className="w-4 h-4" />
+                          <StatusIcon className="w-3 h-3" />
                         </div>
                         <div className="flex-1">
-                          <p className={`font-medium ${
+                          <p className={`text-sm font-medium ${
                             isActive ? 'text-gray-800' : 'text-gray-600'
                           }`}>
                             {status.description}
                           </p>
-                          <p className="text-sm text-gray-500">{status.timestamp}</p>
+                          <p className="text-xs text-gray-500">{status.timestamp}</p>
                         </div>
                       </motion.div>
                     );

@@ -76,34 +76,34 @@ const GroupShopping = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-yellow-50 to-blue-100 p-4">
+    <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-6xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-3xl shadow-2xl overflow-hidden"
+          className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
         >
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-600 to-yellow-500 p-6">
+          <div className="bg-blue-600 p-6 border-b border-gray-100">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <motion.div 
                   whileHover={{ rotate: 15 }}
-                  className="w-12 h-12 bg-white rounded-full flex items-center justify-center"
+                  className="w-10 h-10 bg-white rounded-lg flex items-center justify-center"
                 >
-                  <Users className="text-blue-600 w-6 h-6" />
+                  <Users className="text-blue-600 w-5 h-5" />
                 </motion.div>
                 <div>
-                  <h1 className="text-2xl font-bold text-white">Group Shopping Lobby</h1>
-                  <p className="text-blue-100">Collaborate with friends and family</p>
+                  <h1 className="text-xl font-semibold text-white">Group Shopping Lobby</h1>
+                  <p className="text-blue-200 text-sm">Collaborate with friends and family</p>
                 </div>
               </div>
               
               <div className="flex items-center space-x-3">
-                <div className="bg-white/20 rounded-lg p-3">
-                  <p className="text-blue-100 text-sm">Group Code</p>
+                <div className="bg-white/10 rounded-lg p-3">
+                  <p className="text-blue-200 text-xs">Group Code</p>
                   <div className="flex items-center space-x-2">
-                    <span className="text-white font-mono font-bold">{groupCode}</span>
+                    <span className="text-white font-mono text-sm font-medium">{groupCode}</span>
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -111,9 +111,9 @@ const GroupShopping = () => {
                       className="p-1 rounded"
                     >
                       {copied ? (
-                        <Check className="w-4 h-4 text-green-300" />
+                        <Check className="w-3 h-3 text-green-300" />
                       ) : (
-                        <Copy className="w-4 h-4 text-white" />
+                        <Copy className="w-3 h-3 text-white" />
                       )}
                     </motion.button>
                   </div>
@@ -125,8 +125,8 @@ const GroupShopping = () => {
           <div className="grid lg:grid-cols-3 gap-8 p-6">
             {/* Members Section */}
             <div className="lg:col-span-1">
-              <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                <Users className="w-5 h-5 mr-2 text-blue-500" />
+              <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                <Users className="w-4 h-4 mr-2 text-blue-600" />
                 Group Members ({members.length})
               </h2>
               
@@ -137,30 +137,30 @@ const GroupShopping = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl"
+                    className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg"
                   >
                     <div className="text-2xl">{member.avatar}</div>
                     <div className="flex-1">
-                      <p className="font-medium text-gray-800 flex items-center">
+                      <p className="text-sm font-medium text-gray-900 flex items-center">
                         {member.name}
                         {member.isHost && (
-                          <Crown className="w-4 h-4 ml-1 text-yellow-500" />
+                          <Crown className="w-3 h-3 ml-1 text-yellow-500" />
                         )}
                       </p>
-                      <p className="text-sm text-gray-500">
+                      <p className="text-xs text-gray-500">
                         {member.isHost ? 'Host' : 'Member'}
                       </p>
                     </div>
-                    <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                   </motion.div>
                 ))}
                 
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full p-3 border-2 border-dashed border-gray-300 rounded-xl text-gray-500 hover:border-blue-400 hover:text-blue-600 transition-all"
+                  className="w-full p-3 border border-dashed border-gray-300 rounded-lg text-gray-500 hover:border-blue-400 hover:text-blue-600 transition-all"
                 >
-                  <Plus className="w-5 h-5 mx-auto mb-1" />
+                  <Plus className="w-4 h-4 mx-auto mb-1" />
                   <p className="text-sm">Invite More Friends</p>
                 </motion.button>
               </div>
@@ -169,8 +169,8 @@ const GroupShopping = () => {
             {/* Cart Section */}
             <div className="lg:col-span-2">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-bold text-gray-800 flex items-center">
-                  <ShoppingCart className="w-5 h-5 mr-2 text-blue-500" />
+                <h2 className="text-lg font-semibold text-gray-900 flex items-center">
+                  <ShoppingCart className="w-4 h-4 mr-2 text-blue-600" />
                   Shared Cart ({cartItems.length} items)
                 </h2>
                 
@@ -178,7 +178,7 @@ const GroupShopping = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setShowAddItem(true)}
-                  className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-yellow-500 text-white rounded-full hover:shadow-lg transition-all"
+                  className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all"
                 >
                   <Plus className="w-4 h-4" />
                   <span>Add Item</span>
@@ -200,26 +200,26 @@ const GroupShopping = () => {
                       animate={{ scale: 1, opacity: 1 }}
                       exit={{ scale: 0.9, opacity: 0 }}
                       onClick={(e) => e.stopPropagation()}
-                      className="bg-white rounded-2xl p-6 w-full max-w-md"
+                      className="bg-white rounded-xl p-6 w-full max-w-md"
                     >
-                      <h3 className="text-xl font-bold text-gray-800 mb-4">Add New Item</h3>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-4">Add New Item</h3>
                       
                       <div className="space-y-4">
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1">
+                          <label className="block text-sm font-medium text-gray-900 mb-1">
                             Item Name
                           </label>
                           <input
                             type="text"
                             value={newItemName}
                             onChange={(e) => setNewItemName(e.target.value)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             placeholder="Enter item name"
                           />
                         </div>
                         
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1">
+                          <label className="block text-sm font-medium text-gray-900 mb-1">
                             Price ($)
                           </label>
                           <input
@@ -227,7 +227,7 @@ const GroupShopping = () => {
                             step="0.01"
                             value={newItemPrice}
                             onChange={(e) => setNewItemPrice(e.target.value)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             placeholder="Enter price"
                           />
                         </div>
@@ -236,13 +236,13 @@ const GroupShopping = () => {
                       <div className="flex space-x-3 mt-6">
                         <button
                           onClick={() => setShowAddItem(false)}
-                          className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                          className="flex-1 px-4 py-2 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
                         >
                           Cancel
                         </button>
                         <button
                           onClick={addItem}
-                          className="flex-1 px-4 py-2 bg-gradient-to-r from-blue-500 to-yellow-500 text-white rounded-lg hover:shadow-lg transition-all"
+                          className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all"
                         >
                           Add Item
                         </button>
@@ -262,32 +262,32 @@ const GroupShopping = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ delay: index * 0.05 }}
-                      className="flex items-center space-x-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
+                      className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
                     >
                       <div className="flex-1">
-                        <h3 className="font-medium text-gray-800">{item.name}</h3>
+                        <h3 className="text-sm font-medium text-gray-900">{item.name}</h3>
                         <p className="text-sm text-gray-500">Added by {item.addedBy}</p>
                       </div>
                       
                       <div className="flex items-center space-x-2">
                         <button
                           onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                          className="w-8 h-8 rounded-full bg-white border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                          className="w-7 h-7 rounded-lg bg-white border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors text-sm"
                         >
                           -
                         </button>
-                        <span className="w-8 text-center font-medium">{item.quantity}</span>
+                        <span className="w-6 text-center text-sm font-medium">{item.quantity}</span>
                         <button
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          className="w-8 h-8 rounded-full bg-white border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                          className="w-7 h-7 rounded-lg bg-white border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors text-sm"
                         >
                           +
                         </button>
                       </div>
                       
                       <div className="text-right">
-                        <p className="font-bold text-gray-800">${(item.price * item.quantity).toFixed(2)}</p>
-                        <p className="text-sm text-gray-500">${item.price.toFixed(2)} each</p>
+                        <p className="text-sm font-semibold text-gray-900">${(item.price * item.quantity).toFixed(2)}</p>
+                        <p className="text-xs text-gray-500">${item.price.toFixed(2)} each</p>
                       </div>
                       
                       <motion.button
@@ -304,10 +304,10 @@ const GroupShopping = () => {
               </div>
 
               {/* Cart Summary */}
-              <div className="bg-gradient-to-r from-blue-600 to-yellow-500 rounded-2xl p-6 text-white">
+              <div className="bg-blue-600 rounded-xl p-6 text-white">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-bold">Cart Summary</h3>
-                  <DollarSign className="w-6 h-6" />
+                  <h3 className="text-lg font-semibold">Cart Summary</h3>
+                  <DollarSign className="w-5 h-5" />
                 </div>
                 
                 <div className="space-y-2 mb-4">
@@ -323,8 +323,8 @@ const GroupShopping = () => {
                     <span>Delivery:</span>
                     <span>$2.99</span>
                   </div>
-                  <div className="border-t border-white/20 pt-2">
-                    <div className="flex justify-between font-bold text-lg">
+                  <div className="border-t border-white/20 pt-2 mt-2">
+                    <div className="flex justify-between font-semibold">
                       <span>Total:</span>
                       <span>${(totalAmount + (totalAmount * 0.085) + 2.99).toFixed(2)}</span>
                     </div>
@@ -334,12 +334,12 @@ const GroupShopping = () => {
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full py-3 bg-white text-blue-600 font-bold rounded-xl hover:shadow-lg transition-all"
+                  className="w-full py-3 bg-white text-blue-600 font-medium rounded-lg hover:bg-gray-50 transition-all"
                 >
                   Proceed to Checkout (Host Only)
                 </motion.button>
                 
-                <p className="text-center text-blue-100 text-sm mt-2">
+                <p className="text-center text-blue-200 text-xs mt-2">
                   Only the host can complete the payment
                 </p>
               </div>

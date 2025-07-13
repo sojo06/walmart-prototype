@@ -130,7 +130,7 @@ const Products = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-yellow-50 to-blue-100 p-4">
+    <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div 
@@ -138,10 +138,10 @@ const Products = () => {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Smart Shopping
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-lg text-gray-600">
             Discover products with AI-powered recommendations
           </p>
         </motion.div>
@@ -151,28 +151,28 @@ const Products = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-white rounded-2xl p-6 shadow-xl mb-8"
+          className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 mb-8"
         >
           <div className="grid md:grid-cols-3 gap-4">
             {/* Search */}
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
               <input
                 type="text"
                 placeholder="Search products..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
 
             {/* Category Filter */}
             <div className="relative">
-              <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none bg-white"
+                className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none bg-white"
               >
                 <option value="all">All Categories</option>
                 {categories.slice(1).map(category => (
@@ -187,7 +187,7 @@ const Products = () => {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none bg-white"
+              className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none bg-white"
             >
               <option value="featured">Featured</option>
               <option value="price-low">Price: Low to High</option>
@@ -204,31 +204,31 @@ const Products = () => {
               initial={{ opacity: 0, y: -50, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -50, scale: 0.9 }}
-              className="fixed top-24 right-4 z-50 bg-gradient-to-r from-yellow-400 to-orange-500 text-white p-6 rounded-2xl shadow-2xl max-w-sm"
+              className="fixed top-20 right-4 z-50 bg-blue-600 text-white p-4 rounded-xl shadow-lg max-w-sm border border-blue-500"
             >
               <div className="flex items-center mb-3">
-                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center mr-3">
-                  <Eye className="w-4 h-4 text-yellow-500" />
+                <div className="w-6 h-6 bg-white rounded-lg flex items-center justify-center mr-3">
+                  <Eye className="w-3 h-3 text-blue-600" />
                 </div>
-                <h3 className="font-bold">Smart Recommendations</h3>
+                <h3 className="text-sm font-semibold">Smart Recommendations</h3>
               </div>
-              <p className="mb-4">Since you added milk, you might also like:</p>
+              <p className="text-sm mb-3">Since you added milk, you might also like:</p>
               <div className="space-y-2">
                 {recommendations.map(rec => {
                   const product = products.find(p => p.id === rec.id);
                   return product ? (
-                    <div key={rec.id} className="flex items-center justify-between bg-white/20 rounded-lg p-2">
+                    <div key={rec.id} className="flex items-center justify-between bg-white/10 rounded-lg p-2">
                       <div>
-                        <p className="font-medium">{product.name}</p>
-                        <p className="text-sm opacity-90">{rec.reason}</p>
+                        <p className="text-sm font-medium">{product.name}</p>
+                        <p className="text-xs opacity-90">{rec.reason}</p>
                       </div>
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => addToCart(rec.id)}
-                        className="p-2 bg-white text-yellow-500 rounded-lg"
+                        className="p-1 bg-white text-blue-600 rounded-lg"
                       >
-                        <Plus className="w-4 h-4" />
+                        <Plus className="w-3 h-3" />
                       </motion.button>
                     </div>
                   ) : null;
@@ -249,14 +249,14 @@ const Products = () => {
                 exit={{ opacity: 0, y: -50 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
-                className="bg-white rounded-2xl shadow-xl overflow-hidden group"
+                className="bg-white rounded-xl shadow-sm hover:shadow-md overflow-hidden group border border-gray-100 transition-all"
               >
                 {/* Product Image */}
                 <div className="relative overflow-hidden">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   
                   {/* Wishlist Button */}
@@ -264,10 +264,10 @@ const Products = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => toggleWishlist(product.id)}
-                    className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-lg"
+                    className="absolute top-2 right-2 p-1.5 bg-white rounded-lg shadow-sm"
                   >
                     <Heart 
-                      className={`w-5 h-5 ${
+                      className={`w-4 h-4 ${
                         wishlist.includes(product.id) 
                           ? 'text-red-500 fill-current' 
                           : 'text-gray-400'
@@ -277,14 +277,14 @@ const Products = () => {
 
                   {/* Sale Badge */}
                   {product.originalPrice && (
-                    <div className="absolute top-3 left-3 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                    <div className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded-lg text-xs font-medium">
                       SALE
                     </div>
                   )}
 
                   {/* Cart Count Badge */}
                   {getCartCount(product.id) > 0 && (
-                    <div className="absolute bottom-3 right-3 bg-blue-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">
+                    <div className="absolute bottom-2 right-2 bg-blue-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs font-medium">
                       {getCartCount(product.id)}
                     </div>
                   )}
@@ -297,7 +297,7 @@ const Products = () => {
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
-                          className={`w-4 h-4 ${
+                          className={`w-3 h-3 ${
                             i < Math.floor(product.rating)
                               ? 'text-yellow-400 fill-current'
                               : 'text-gray-300'
@@ -305,26 +305,26 @@ const Products = () => {
                         />
                       ))}
                     </div>
-                    <span className="text-sm text-gray-500 ml-2">
+                    <span className="text-xs text-gray-500 ml-2">
                       ({product.reviews})
                     </span>
                   </div>
 
-                  <h3 className="font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-sm font-semibold text-gray-900 mb-2">
                     {product.name}
                   </h3>
                   
-                  <p className="text-sm text-gray-600 mb-3">
+                  <p className="text-xs text-gray-600 mb-3">
                     {product.description}
                   </p>
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
-                      <span className="text-xl font-bold text-gray-800">
+                      <span className="text-lg font-semibold text-gray-900">
                         ${product.price}
                       </span>
                       {product.originalPrice && (
-                        <span className="text-sm text-gray-500 line-through">
+                        <span className="text-xs text-gray-500 line-through">
                           ${product.originalPrice}
                         </span>
                       )}
@@ -334,10 +334,10 @@ const Products = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => addToCart(product.id)}
-                      className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-yellow-500 text-white rounded-full hover:shadow-lg transition-all"
+                      className="flex items-center space-x-1 px-3 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all text-sm"
                     >
                       <ShoppingCart className="w-4 h-4" />
-                      <span className="font-medium">Add</span>
+                      <span>Add</span>
                     </motion.button>
                   </div>
                 </div>
@@ -351,12 +351,12 @@ const Products = () => {
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            className="fixed bottom-4 right-4 bg-gradient-to-r from-blue-600 to-yellow-500 text-white p-4 rounded-2xl shadow-2xl"
+            className="fixed bottom-4 right-4 bg-blue-600 text-white p-4 rounded-xl shadow-lg border border-blue-500"
           >
             <div className="flex items-center space-x-3">
-              <ShoppingCart className="w-6 h-6" />
+              <ShoppingCart className="w-5 h-5" />
               <div>
-                <p className="font-bold">{cart.length} items in cart</p>
+                <p className="text-sm font-semibold">{cart.length} items in cart</p>
                 <p className="text-sm opacity-90">
                   Total: ${cart.reduce((total, id) => {
                     const product = products.find(p => p.id === id);
@@ -367,7 +367,7 @@ const Products = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-4 py-2 bg-white text-blue-600 rounded-full font-bold ml-4"
+                className="px-4 py-2 bg-white text-blue-600 rounded-lg text-sm font-medium ml-4"
               >
                 Checkout
               </motion.button>
