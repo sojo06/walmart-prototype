@@ -4,6 +4,7 @@ import { Mic, MicOff, Volume2, ShoppingCart, Search, Package, Settings } from 'l
 
 const VoiceAssistant = () => {
   const [isListening, setIsListening] = useState(false);
+  const [isPressed, setIsPressed] = useState(false);
   const [command, setCommand] = useState('');
   const [response, setResponse] = useState('');
   const [voiceWave, setVoiceWave] = useState(0);
@@ -58,6 +59,7 @@ const VoiceAssistant = () => {
 
   const startListening = () => {
     setIsListening(true);
+    setIsPressed(true);
     setCommand('');
     setResponse('');
     
@@ -70,6 +72,7 @@ const VoiceAssistant = () => {
 
   const stopListening = () => {
     setIsListening(false);
+    setTimeout(() => setIsPressed(false), 200);
   };
 
   return (
@@ -96,16 +99,16 @@ const VoiceAssistant = () => {
         >
           {/* Voice Visualizer */}
           <div className="flex justify-center mb-8">
-            <motion.div 
-              className="relative w-32 h-32 bg-blue-600 rounded-full flex items-center justify-center"
+            <motion.div
+              className="relative w-40 h-40 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center shadow-2xl"
               animate={{ 
-                scale: isListening ? [1, 1.1, 1] : 1,
+                scale: isPressed ? 1.2 : isListening ? [1, 1.1, 1] : 1,
                 boxShadow: isListening 
-                  ? [`0 0 0 0 rgba(37, 99, 235, 0.4)`, `0 0 0 15px rgba(37, 99, 235, 0)`]
-                  : `0 4px 20px rgba(0, 0, 0, 0.1)`
+                  ? [`0 0 0 0 rgba(59, 130, 246, 0.6)`, `0 0 0 30px rgba(59, 130, 246, 0)`]
+                  : `0 10px 40px rgba(0, 0, 0, 0.2)`
               }}
               transition={{ 
-                duration: isListening ? 1.5 : 0.3, 
+                duration: isPressed ? 0.1 : isListening ? 1.5 : 0.3, 
                 repeat: isListening ? Infinity : 0 
               }}
             >
@@ -115,7 +118,7 @@ const VoiceAssistant = () => {
                   {[...Array(5)].map((_, i) => (
                     <motion.div
                       key={i}
-                      className="absolute inset-0 border-2 border-white/30 rounded-full"
+                      className="absolute inset-0 border-3 border-white/40 rounded-full"
                       animate={{
                         scale: [1, 1.5, 1],
                         opacity: [0.7, 0.3, 0]
@@ -132,14 +135,16 @@ const VoiceAssistant = () => {
               
               <motion.button
                 whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileTap={{ scale: 1.3 }}
+                onTapStart={() => setIsPressed(true)}
+                onTap={() => setTimeout(() => setIsPressed(false), 150)}
                 onClick={isListening ? stopListening : startListening}
-                className="relative z-10 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md"
+                className="relative z-10 w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl transition-all"
               >
                 {isListening ? (
-                  <MicOff className="w-8 h-8 text-red-500" />
+                  <MicOff className="w-10 h-10 text-red-500" />
                 ) : (
-                  <Mic className="w-8 h-8 text-blue-600" />
+                  <Mic className="w-10 h-10 text-blue-600" />
                 )}
               </motion.button>
             </motion.div>
